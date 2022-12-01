@@ -1,5 +1,9 @@
-import React, { PureComponent } from 'react';
+//Raven's Health -> Visualizing the activity data
+//Mo'min Mushtaha - 101114546
+
+import React, {PureComponent} from 'react';
 import './App.css';
+import healthData from './health1.json';
 import {
     LineChart,
     ResponsiveContainer,
@@ -12,78 +16,42 @@ import {
     PieChart,
     Pie,
     Sector,
-    Cell,
-    LabelList
+    Cell
 } from 'recharts';
 
 
-const pdata = [
-  {
-      name: 'Saturday',
-      hoursSedentary: 50,
-      hoursLightlyActive: 12,
-      hoursFairlyActive: 31,
-      hoursVeryActive: 54
-  },
-  {
-      name: 'Sunday',
-      hoursSedentary: 60,
-      hoursLightlyActive: 76,
-      hoursFairlyActive: 90,
-      hoursVeryActive: 70
-  },
-  {
-      name: 'Monday',
-      hoursSedentary: 80,
-      hoursLightlyActive: 89,
-      hoursFairlyActive: 50,
-      hoursVeryActive: 150
-  },
-  {
-      name: 'Tuesday',
-      hoursSedentary: 110,
-      hoursLightlyActive: 87,
-      hoursFairlyActive: 131,
-      hoursVeryActive: 140
-  },
-  {
-      name: 'Wednesday',
-      hoursSedentary: 34,
-      hoursLightlyActive: 33,
-      hoursFairlyActive: 67,
-      hoursVeryActive: 87
-  },
-  {
-      name: 'Thursday',
-      hoursSedentary: 45,
-      hoursLightlyActive: 98,
-      hoursFairlyActive: 56,
-      hoursVeryActive: 99
-  },
-  {
-    name: 'Friday',
-    hoursSedentary: 130,
-    hoursLightlyActive: 33,
-    hoursFairlyActive: 23,
-    hoursVeryActive: 120
-  },
+
+//finding the average for each activity data for the pie chart
+
+const Sedentary_data = healthData.map((healthData)=>healthData.SED_MINS);
+const Light_active_data = healthData.map((healthData)=>healthData.L_AC_MINS);
+const Fair_active_data = healthData.map((healthData)=>healthData.F_AC_MINS);
+const Very_active_data = healthData.map((healthData)=>healthData.V_AC_MINS);
+
+
+
+
+const averages = [
+  {name: 'Very Active Hours', value: parseFloat(((Very_active_data.reduce((total, score) => total + score, 0))
+   / healthData.length).toFixed(2))},
+  {name: 'Lightly Active Hours', value: parseFloat(((Light_active_data.reduce((total, score) => total + score, 0)) 
+  / healthData.length).toFixed(2))},
+  {name: 'Fairly Active Hours', value: parseFloat(((Fair_active_data.reduce((total, score) => total + score, 0)) 
+  / healthData.length).toFixed(2)) },
+  {name: 'Sedentary Hours', value: parseFloat(((Sedentary_data.reduce((total, score) => total + score, 0)) 
+  / healthData.length).toFixed(2))},
 ];
 
-
-
-
-const data = [
-  { name: 'Very Active Hours', value: 400 },
-  { name: 'Lightly Active Hours', value: 300 },
-  { name: 'Fairly Active Hours', value: 300 },
-  { name: 'Sedentary Hours', value: 200 },
-];
+//specifying the colors to be used in the pie chart
 
 const COLORS = ['blue', 'red', 'green', 'black'];
 
+
+//creating the interactive pie chart
+
 const renderActiveShape = (props) => {
   const RADIAN = Math.PI / 180;
-  const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle, fill, payload, percent, value } = props;
+  const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle, fill, payload, percent} = props;
   const sin = Math.sin(-RADIAN * midAngle);
   const cos = Math.cos(-RADIAN * midAngle);
   const sx = cx + (outerRadius + 10) * cos;
@@ -130,7 +98,6 @@ const renderActiveShape = (props) => {
 };
 
 
-
 export default class Example extends PureComponent {
   state = {
     activeIndex: 0,
@@ -141,26 +108,24 @@ export default class Example extends PureComponent {
       activeIndex: index,
     });
   };
-  render() {
-    
-    return (
-      
-      
-      <>
-      
-      
-      
-      <h1 className="text-heading" style = {{fontFamily: "Consolas"}}>
-              . Ravens' Health .
-            </h1>
 
-            <ResponsiveContainer width="60%" aspect={3} 
-            margin={{ right: 200, up:400}} >
-      <PieChart style = {{fontFamily: "Consolas"}} width={600} height={900} margin={{ right: 200, down:400}}  >
-      <Pie
+
+render() {
+  return (
+      
+    <>
+    <h1 className="text-heading" style = {{fontFamily: "Consolas"}}>
+      . Ravens' Health .
+    </h1>
+    <h5 className="text-heading" style = {{fontFamily: "Consolas"}}>
+         Visualizing the activity data    
+    </h5>
+      <ResponsiveContainer width="60%" aspect={3} margin={{right: 200, up: 400}}>
+        <PieChart style = {{fontFamily: "Consolas"}} width={600} height={900} margin={{right: 200, down: 400}}>
+          <Pie
             activeIndex={this.state.activeIndex}
             activeShape={renderActiveShape}
-            data={data}
+            data={averages}
             cx="50%"
             cy="45%"
             innerRadius={90}
@@ -170,47 +135,26 @@ export default class Example extends PureComponent {
             onMouseEnter={this.onPieEnter}
           >
               
-        
-         {
-           data.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
-         }
-          {
-            data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
-          }
-        </Pie>
-      </PieChart>
+         {averages.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)}
+         {averages.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)}
+          </Pie>
+        </PieChart>
       </ResponsiveContainer>
 
-      
-
-
-            <ResponsiveContainer width="100%" aspect={5} 
-            >
-            <LineChart style = {{fontFamily: "Consolas"}} data={pdata} margin={{ right: 200, left:505 , down:400, up:200} } 
-            >
-                    <CartesianGrid />
-                    <XAxis dataKey="name" 
-                        interval={'preserveStartEnd'} >
-                            </XAxis>
-                    <YAxis label={{ value: 'Hours', angle: -90, position: 'insideLeft', textAnchor: 'middle' }} />
-                    <Legend />
-                    <Tooltip />
-                    <Line dataKey="hoursSedentary" 
-                        stroke="black" activeDot={{ r: 8 }} />
-                    <Line dataKey="hoursLightlyActive"
-                        stroke="red" activeDot={{ r: 8 }} />
-                    <Line dataKey="hoursFairlyActive"
-                        stroke="green" activeDot={{ r: 8 }} />
-                    <Line dataKey="hoursVeryActive"
-                        stroke="blue" activeDot={{ r: 8 }} />
-                    
-                </LineChart>
-                </ResponsiveContainer>
-
-      
-      
-      
-      </>
+      <ResponsiveContainer width="100%" aspect={5}>
+        <LineChart style = {{fontFamily: "Consolas"}} data = {healthData} margin={{ right: 200, left: 505, down: 400, up:200}}>
+          <CartesianGrid />
+          <XAxis dataKey="key" interval={'preserveStartEnd'}/>
+          <YAxis   label={{ value: 'Minutes', angle: -90, position: 'insideLeft', textAnchor: 'middle' }} />
+          <Legend />
+          <Tooltip />
+            <Line name= "Sedentary Hours" dataKey="SED_MINS" stroke="black" activeDot={{ r: 8 }} />
+            <Line name= "Very Active Hours" dataKey="V_AC_MINS" stroke="blue" activeDot={{ r: 8 }} />
+            <Line name= "Fairly Active Hours" dataKey="F_AC_MINS" stroke="green" activeDot={{ r: 8 }} />
+            <Line name= "Lightly Active Hours" dataKey="L_AC_MINS" stroke="red" activeDot={{ r: 8 }} />   
+        </LineChart>
+      </ResponsiveContainer>
+    </>
     );
   }
 }

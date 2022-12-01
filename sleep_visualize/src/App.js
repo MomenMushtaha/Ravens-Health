@@ -1,5 +1,9 @@
-import React, { PureComponent } from 'react';
+//Raven's Health -> Visualizing the sleep data
+//Mo'min Mushtaha - 101114546
+
+import React, {PureComponent} from 'react';
 import './App.css';
+import healthData from './health1.json';
 import {
     LineChart,
     ResponsiveContainer,
@@ -12,78 +16,43 @@ import {
     PieChart,
     Pie,
     Sector,
-    Cell,
-    LabelList
+    Cell
 } from 'recharts';
 
 
-const pdata = [
-  {
-      name: 'Saturday',
-      hoursLightSleep: 50,
-      hoursREMSleep: 12,
-      hoursDeepSleep: 31,
-      hoursAwake: 54
-  },
-  {
-      name: 'Sunday',
-      hoursLightSleep: 60,
-      hoursREMSleep: 76,
-      hoursDeepSleep: 90,
-      hoursAwake: 70
-  },
-  {
-      name: 'Monday',
-      hoursLightSleep: 80,
-      hoursREMSleep: 89,
-      hoursDeepSleep: 50,
-      hoursAwake: 150
-  },
-  {
-      name: 'Tuesday',
-      hoursLightSleep: 110,
-      hoursREMSleep: 87,
-      hoursDeepSleep: 131,
-      hoursAwake: 140
-  },
-  {
-      name: 'Wednesday',
-      hoursLightSleep: 34,
-      hoursREMSleep: 33,
-      hoursDeepSleep: 67,
-      hoursAwake: 87
-  },
-  {
-      name: 'Thursday',
-      hoursLightSleep: 45,
-      hoursREMSleep: 98,
-      hoursDeepSleep: 56,
-      hoursAwake: 99
-  },
-  {
-    name: 'Friday',
-    hoursLightSleep: 130,
-    hoursREMSleep: 33,
-    hoursDeepSleep: 23,
-    hoursAwake: 120
-  },
+
+//finding the average for each sleep data for the pie chart
+
+const Awake_data = healthData.map((healthData)=>healthData.AWAKE_MINS);
+const Light_sleep_data = healthData.map((healthData)=>healthData.LIGHT_SLEEP);
+const REM_sleep_data = healthData.map((healthData)=>healthData.REM_SLEEP);
+const Deep_sleep_data = healthData.map((healthData)=>healthData.DEEP_SLEEP);
+;
+
+
+
+
+const averages = [
+  {name: 'Awake Hours', value: parseFloat(((Awake_data.reduce((total, score) => total + score, 0))
+   / healthData.length).toFixed(2))},
+  {name: 'Light Sleep Hours', value: parseFloat(((Light_sleep_data.reduce((total, score) => total + score, 0)) 
+  / healthData.length).toFixed(2))},
+  {name: 'REM Sleep Hours', value: parseFloat(((REM_sleep_data.reduce((total, score) => total + score, 0)) 
+  / healthData.length).toFixed(2)) },
+  {name: 'Deep Sleep Hours', value: parseFloat(((Deep_sleep_data.reduce((total, score) => total + score, 0)) 
+  / healthData.length).toFixed(2))},
 ];
 
+//specifying the colors to be used in the pie chart
+
+const COLORS = ['blue', 'red', 'green', 'black'];
 
 
-
-const data = [
-  { name: 'Light Sleep Hours', value: 400 },
-  { name: 'REM Sleep Hours', value: 300 },
-  { name: 'Deep Sleep Hours', value: 300 },
-  { name: 'Awake Hours', value: 200 },
-];
-
-const COLORS = ['violet', 'purple', 'grey', 'brown'];
+//creating the interactive pie chart
 
 const renderActiveShape = (props) => {
   const RADIAN = Math.PI / 180;
-  const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle, fill, payload, percent, value } = props;
+  const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle, fill, payload, percent} = props;
   const sin = Math.sin(-RADIAN * midAngle);
   const cos = Math.cos(-RADIAN * midAngle);
   const sx = cx + (outerRadius + 10) * cos;
@@ -130,7 +99,6 @@ const renderActiveShape = (props) => {
 };
 
 
-
 export default class Example extends PureComponent {
   state = {
     activeIndex: 0,
@@ -141,29 +109,25 @@ export default class Example extends PureComponent {
       activeIndex: index,
     });
   };
-  render() {
+
+
+render() {
+  return (  
+    <>
     
-    return (
-      
-      
-      <>
-      
-      
-      
-      <h1 className="text-heading" style = {{fontFamily: "Consolas"}} >
-              . Ravens' Health .
-              
-            </h1>
-            
+    <h1 className="text-heading" style = {{fontFamily: "Consolas"}}>
+      . Ravens' Health .
 
-
-            <ResponsiveContainer width="60%" aspect={3} 
-            margin={{ right: 200, up:400}} >
-      <PieChart style = {{fontFamily: "Consolas"}} width={600} height={900} margin={{ right: 200, down:400}}  >
-      <Pie
+    </h1>
+    <h5 className="text-heading" style = {{fontFamily: "Consolas"}}>
+         Visualizing the sleep data    
+    </h5>
+      <ResponsiveContainer width="55%" aspect={3} margin={{right: 200, up: 400}}>
+        <PieChart style = {{fontFamily: "Consolas"}} width={600} height={900} margin={{right: 200, down: 400}}>
+          <Pie
             activeIndex={this.state.activeIndex}
             activeShape={renderActiveShape}
-            data={data}
+            data={averages}
             cx="50%"
             cy="45%"
             innerRadius={90}
@@ -173,47 +137,26 @@ export default class Example extends PureComponent {
             onMouseEnter={this.onPieEnter}
           >
               
-        
-         {
-           data.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
-         }
-          {
-            data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
-          }
-        </Pie>
-      </PieChart>
+         {averages.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)}
+         {averages.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)}
+          </Pie>
+        </PieChart>
       </ResponsiveContainer>
 
-      
-
-
-            <ResponsiveContainer width="100%" aspect={5} 
-            >
-            <LineChart style = {{fontFamily: "Consolas"}} data={pdata} margin={{ right: 200, left:505 , down:400, up:200} } 
-            >
-                    <CartesianGrid />
-                    <XAxis dataKey="name" 
-                        interval={'preserveStartEnd'} >
-                            </XAxis>
-                    <YAxis label={{ value: 'Hours', angle: -90, position: 'insideLeft', textAnchor: 'middle' }} />
-                    <Legend />
-                    <Tooltip />
-                    <Line dataKey="hoursAwake" 
-                        stroke="brown" activeDot={{ r: 8 }} />
-                    <Line dataKey="hoursLightSleep"
-                        stroke="violet" activeDot={{ r: 8 }} />
-                    <Line dataKey="hoursDeepSleep"
-                        stroke="grey" activeDot={{ r: 8 }} />
-                    <Line dataKey="hoursREMSleep"
-                        stroke="purple" activeDot={{ r: 8 }} />
-                    
-                </LineChart>
-                </ResponsiveContainer>
-
-      
-      
-      
-      </>
+      <ResponsiveContainer width="95%" aspect={5}>
+        <LineChart style = {{fontFamily: "Consolas"}} data = {healthData} margin={{ right: 200, left: 505, down: 400, up:200}}>
+          <CartesianGrid />
+          <XAxis dataKey="key" interval={'preserveStartEnd'}/>
+          <YAxis   label={{ value: 'Minutes', angle: -90, position: 'insideLeft', textAnchor: 'middle' }} />
+          <Legend />
+          <Tooltip />
+            <Line name= "Awake Hours" dataKey="AWAKE_MINS" stroke="blue" activeDot={{ r: 8 }} />
+            <Line name= "Deep Sleep Hours" dataKey="DEEP_SLEEP" stroke="black" activeDot={{ r: 8 }} />
+            <Line name= "REM Sleep Hours" dataKey="REM_SLEEP" stroke="green" activeDot={{ r: 8 }} />
+            <Line name= "Light Sleep Hours" dataKey="LIGHT_SLEEP" stroke="red" activeDot={{ r: 8 }} />   
+        </LineChart>
+      </ResponsiveContainer>      
+    </>
     );
   }
 }
