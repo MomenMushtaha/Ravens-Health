@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# Ravens' Health
+ Ravens' Health is a web app designed to display self-collected activity tracker data from Fitbit® devices on a large screen for physicians in clinical settings. The goal is to make the data more accessible and enable physicians to better understand and assess a patient's daily activities.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Getting Started with Create React App
+```python
+npm install
+```
+## Project Objective
 
-## Available Scripts
+The main objective of this project is to build a web app to visualize data collected from FitBit® to collaboratively discuss and make better decisions about the patient's health.
 
-In the project directory, you can run:
+## Getting Started
 
-### `npm start`
+### Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Node.js
+- npm
+- recharts
+- antd
+- react-buddy
+- react-swipeable-views
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+### Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. clone the repository
+```python
+git clone https://github.com/MomenMushtaha/Ravens-Health.git
+```
 
-### `npm run build`
+2. install npm
+```python
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. install other dependencies
+```python
+ npm i recharts 
+```
+```python
+ npm i antd  
+```
+```python
+npm install @react-buddy/ide-toolbox
+```
+```python
+npm install --save react-swipeable-views --legacy-peer-deps
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Start the development server
+```python
+npm start
+```
+The web app will be accessible at 'http://localhost:3000'.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Usage
 
-### `npm run eject`
+1. Register on the web app using the provided link.
+2. Enter your Name, FitBit® email, FitBit® password, and Ontario Health Card number.
+3. Select the option to send FitBit® health data to the physician.
+4. The web app will fetch your data from the Fitbit® website and send it to the local server at the physician's clinic with the Health Card number attached.
+5. At the physician's office, provide your Health Card number.
+6. The physician will input your Health Card number, and the system will search for the associated file.
+7. If found, a local database will be created, and the Health Data visualization will be displayed.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### License
+This project is licensed under the MIT License. See the LICENSE file for more information.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Contact
+If you have any questions, please feel free to reach out to the repository owner or open an issue on GitHub.
 
-## Learn More
+Ravens Health - https://github.com/MomenMushtaha/Ravens-Health
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
