@@ -64,6 +64,9 @@ The web app will be accessible at 'http://localhost:3000'.
 7. If found, a local database will be created, and the Health Data visualization will be displayed.
 
 
+### Demo
+
+![Demo.gif](Demo.gif)
 
 ### License
 This project is licensed under the MIT License. See the LICENSE file for more information.
