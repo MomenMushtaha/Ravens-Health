@@ -66,7 +66,7 @@ The web app will be accessible at 'http://localhost:3000'.
 
 ### Demo
 
-![Demo.gif](Demo.gif)
+![](https://github.com/MomenMushtaha/Ravens-Health/blob/main/ravens-health-ui/public/Demo.gif)
 
 ### License
 This project is licensed under the MIT License. See the LICENSE file for more information.
