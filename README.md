@@ -68,6 +68,21 @@ The web app will be accessible at 'http://localhost:3000'.
 
 ![Demo.gif](Demo.gif)
 
+### Built With
+
+* [React](https://reactjs.org/)
+* [Node.js](https://nodejs.org/en/)
+* [npm](https://www.npmjs.com/)
+* [recharts](https://recharts.org/en-US/)
+* [antd](https://ant.design/)
+* [react-buddy](https://www.npmjs.com/package/@react-buddy/ide-toolbox)
+* [react-swipeable-views](https://www.npmjs.com/package/react-swipeable-views)
+
+### Acknowledgements
+* [FitBit®](https://www.fitbit.com/)
+* [Ontario Health](https://www.ontario.ca/page/ontario-public-health-standards?_ga=2.245753569.1174175713.1612533523-1398206300.1612533523)
+
+
 ### License
 This project is licensed under the MIT License. See the LICENSE file for more information.
 
