@@ -83,6 +83,9 @@ The web app will be accessible at 'http://localhost:3000'.
 * [Ontario Health](https://www.ontario.ca/page/ontario-public-health-standards?_ga=2.245753569.1174175713.1612533523-1398206300.1612533523)
 
 
+### Security
+Please report vulnerabilities according to [`SECURITY.md`](SECURITY.md); do not disclose them in public issues.
+
 ### License
 This project is licensed under the MIT License. See the LICENSE file for more information.
 
