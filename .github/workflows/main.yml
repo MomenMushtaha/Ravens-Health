@@ -1,0 +1,28 @@
+version: 2
+updates:
+  # NPM updates
+  - package-ecosystem: "npm"
+    directory: "/ravens-health-ui"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "MomenMushtaha"
+    assignees:
+      - "MomenMushtaha"
+    labels:
+      - "dependencies"
+      - "security"
+    commit-message:
+      prefix: "chore"
+    allow:
+      - dependency-type: "all"
+    
+  # Python updates (if applicable)
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    labels:
+      - "dependencies"
+      - "python"
