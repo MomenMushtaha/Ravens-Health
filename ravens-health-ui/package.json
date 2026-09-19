@@ -3,17 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@react-buddy/ide-toolbox": "^2.3.1",
-    "@react-buddy/palette-antd": "^5.0.0",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "antd": "^5.3.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-swipeable-views": "^0.14.0",
-    "recharts": "^2.5.0",
-    "web-vitals": "^2.1.4"
+    "@react-buddy/ide-toolbox": "^2.5.0",
+    "@react-buddy/palette-antd": "^5.3.1",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
+    "antd": "^6.6.4",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-swipeable-views": "^0.14.2",
+    "recharts": "^3.10.1",
+    "web-vitals": "^6.2.2"
   },
   "scripts": {
     "start": "vite",
@@ -23,7 +23,7 @@
   "overrides": {
     "nth-check": ">=2.1.1",
     "postcss": ">=8.4.47",
-    "nanoid": ">=3.3.19",
+    "nanoid": ">=6.0.1",
     "@babel/runtime": ">=7.26.10",
     "serialize-javascript": ">=7.0.3",
     "rollup-plugin-terser": {
@@ -52,7 +52,7 @@
     ]
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^6.0.2",
-    "vite": "^8.0.16"
+    "@vitejs/plugin-react": "^6.1.1",
+    "vite": "^8.3.0"
   }
 }
