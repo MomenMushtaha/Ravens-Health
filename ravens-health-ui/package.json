@@ -23,6 +23,7 @@
   "overrides": {
     "nth-check": ">=2.1.1",
     "postcss": ">=8.4.47",
+    "nanoid": ">=3.3.19",
     "@babel/runtime": ">=7.26.10",
     "serialize-javascript": ">=7.0.3",
     "rollup-plugin-terser": {

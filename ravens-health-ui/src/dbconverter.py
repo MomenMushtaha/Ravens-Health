@@ -20,8 +20,12 @@ else:
     print("No tables found in the database.")
     exit()
 
-# Execute a query to select all data from the table
-cur.execute(f"SELECT * FROM {table_name}")
+# Validate table name to ensure safe identifier
+if not table_name.isidentifier():
+    raise ValueError(f"Invalid table name detected: {table_name}")
+
+# Execute a query to select all data from the table using quoted identifier
+cur.execute(f'SELECT * FROM "{table_name}"')
 
 # Fetch all rows from the query result
 rows = cur.fetchall()

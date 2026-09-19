@@ -17,12 +17,25 @@ updates:
       prefix: "chore"
     allow:
       - dependency-type: "all"
-    
-  # Python updates (if applicable)
+    groups:
+      npm_and_yarn:
+        patterns:
+          - "*"
+
+  # Python updates
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
       interval: "daily"
+    reviewers:
+      - "MomenMushtaha"
+    assignees:
+      - "MomenMushtaha"
     labels:
       - "dependencies"
       - "python"
+      - "security"
+    commit-message:
+      prefix: "chore"
+    allow:
+      - dependency-type: "all"
