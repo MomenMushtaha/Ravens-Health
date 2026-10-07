@@ -24,7 +24,7 @@
     "nth-check": ">=2.1.1",
     "postcss": ">=8.4.47",
     "nanoid": ">=6.0.1",
-    "@babel/runtime": ">=7.26.10",
+    "@babel/runtime": "^7.26.10",
     "serialize-javascript": ">=7.0.3",
     "rollup-plugin-terser": {
       "serialize-javascript": ">=7.0.3"
