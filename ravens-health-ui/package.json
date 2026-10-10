@@ -8,12 +8,12 @@
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",
     "@testing-library/user-event": "^14.6.7",
-    "antd": "^6.6.4",
+    "antd": "^5.29.3",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "react-swipeable-views": "^0.14.2",
     "recharts": "^3.10.1",
-    "web-vitals": "^6.2.2"
+    "web-vitals": "^6.2.3"
   },
   "scripts": {
     "start": "vite",
@@ -23,8 +23,8 @@
   "overrides": {
     "nth-check": ">=2.1.1",
     "postcss": ">=8.4.47",
-    "nanoid": ">=6.0.1",
-    "@babel/runtime": ">=7.26.10",
+    "nanoid": ">=6.0.2",
+    "@babel/runtime": "^7.26.10",
     "serialize-javascript": ">=7.0.3",
     "rollup-plugin-terser": {
       "serialize-javascript": ">=7.0.3"
@@ -52,7 +52,7 @@
     ]
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^6.1.1",
-    "vite": "^8.3.2"
+    "@vitejs/plugin-react": "^6.1.2",
+    "vite": "^8.3.3"
   }
 }
