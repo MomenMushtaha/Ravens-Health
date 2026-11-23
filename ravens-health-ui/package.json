@@ -4,8 +4,7 @@
   "private": true,
   "dependencies": {
     "@react-buddy/ide-toolbox": "^2.5.0",
-    "@react-buddy/palette-antd": "^5.3.1",
-    "@testing-library/jest-dom": "^8.0.0",
+    "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",
     "@testing-library/user-event": "^14.6.13",
     "antd": "^6.7.1",
@@ -24,7 +23,7 @@
     "nth-check": ">=2.1.1",
     "postcss": ">=8.4.47",
     "nanoid": ">=6.0.2",
-    "@babel/runtime": ">=7.26.10",
+    "@babel/runtime": "^7.26.10",
     "serialize-javascript": ">=7.0.3",
     "rollup-plugin-terser": {
       "serialize-javascript": ">=7.0.3"
